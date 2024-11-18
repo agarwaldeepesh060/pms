@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: rgb(204, 204, 202);
+        }
+        
+        .edit{
+            background-color: green;
+            height: fit-content;
+            width: fit-content;
+            margin: 5px;
+            padding: 10px;
+        }
+        .delete{
+            background-color: red;
+            height: fit-content;
+            width: fit-content;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Password Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Password Category Name</th>
+                <th>Details</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (records.length > 0) { %>
+                <%records.forEach(function(row) { %>
+                    <tr>
+                        <td><%= row.name %></td> 
+                        <td><a class="delete" href="/DELETES/<%= row._id %>">DELETE</a><a class="edit" href="/EDITING/<%= row._id%>">EDIT</a></td> 
+                    </tr>
+                    <% }); %>
+                    <% } %>
+        </tbody> 
+    </table>
+</body>
+</html>
